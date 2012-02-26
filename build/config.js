@@ -44,7 +44,7 @@ config.init({
 
   watch: {
     files: ["assets/**/*", "app/**/*"],
-    tasks: "lint:files concat jst",
+    tasks: "coffee concat jst",
 
     min: {
       files: ["assets/**/*", "app/**/*"],
