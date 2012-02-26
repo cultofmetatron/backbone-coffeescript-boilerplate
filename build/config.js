@@ -39,11 +39,11 @@ config.init({
   },
 
   coffee: {
-      files: ["app/**/*.coffee"]
+      files: ["app/**/*.coffee", "test/unit/**/*.coffee"]
   },
 
   watch: {
-    files: ["assets/**/*", "app/**/*"],
+    files: ["assets/**/*", "app/**/*", "test/unit/**/*.coffee"],
     tasks: "coffee concat jst",
 
     min: {

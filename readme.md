@@ -7,6 +7,9 @@ Forked from tbranyen/backbone-boilerplate, with the following changes:
 
 * Ported example JavaScript files to CoffeeScript
 * Added Grunt task for CoffeeScript compilation, and inserted it into default build
+* Replaced QUnit test framework with [Mocha](http://visionmedia.github.com/mocha/)
+
+For automatic CoffeeScript compilation, use: `node build watch`
 
 ## Original Readme
 
