@@ -1,5 +1,14 @@
-Backbone Boilerplate
+Backbone CoffeeScript Boilerplate
 ====================
+
+## Fork Summary
+
+Forked from tbranyen/backbone-boilerplate, with the following changes:
+
+* Ported example JavaScript files to CoffeeScript
+* Added Grunt task for CoffeeScript compilation, and inserted it into default build
+
+## Original Readme
 
 This boilerplate is the product of much research and frustration.  Existing
 boilerplates freely modify Backbone core, lack a build process, and are
