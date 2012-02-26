@@ -38,6 +38,10 @@ config.init({
     "dist/release/css/style.css": ["dist/debug/css/style.css"]
   },
 
+  coffee: {
+      files: ["app/**/*.coffee"]
+  },
+
   watch: {
     files: ["assets/**/*", "app/**/*"],
     tasks: "lint:files concat jst",
@@ -59,4 +63,4 @@ config.init({
 });
 
 // Run the following tasks...
-task.registerTask("default", "clean lint:files concat jst min mincss");
+task.registerTask("default", "clean coffee concat jst min mincss");
