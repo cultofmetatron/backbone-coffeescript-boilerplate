@@ -46,7 +46,7 @@ jQuery ($) ->
 $(document).on "click", "a:not([data-bypass])", (evt) ->
   # Get the anchor href and protcol
   href = $(this).attr("href")
-  protocol = this.protocol + "#"
+  protocol = this.protocol + "//"
 
   # Ensure the protocol is not part of URL, meaning its relative.
   if href && href.slice(0, protocol.length) is not protocol
