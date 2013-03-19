@@ -24,8 +24,18 @@ task.registerHelper('coffee', function(filepath /* String */, callback /* [Funct
   var coffee = require('coffee-script');
 
   try {
-    var js = coffee.compile(file.read(filepath));
-    if (js) file.write(filepath.replace(/\.coffee$/, '.js'), js);
+    var answer = coffee.compile(file.read(filepath), {
+        'sourceMap': true,
+        'sourceFiles': [ filepath.split('/').slice(-1)[0] ],
+        'generatedFile': filepath.replace(/\.coffee$/, '.map').split('/').slice(-1)[0]
+    });
+    if (answer.js) {
+        answer.js += "\n//@ sourceMappingURL=/" + filepath.replace(/\.coffee$/, '.map');
+        file.write(filepath.replace(/\.coffee$/, '.js'), answer.js);
+    }
+    if (answer.v3SourceMap) {
+        file.write(filepath.replace(/\.coffee$/, '.map'), answer.v3SourceMap);
+    }
   }
   catch (e) {
     log.error(e.message);
