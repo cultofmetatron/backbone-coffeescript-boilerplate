@@ -24,8 +24,13 @@ task.registerHelper('coffee', function(filepath /* String */, callback /* [Funct
   var coffee = require('coffee-script');
 
   try {
-    var answer = coffee.compile(file.read(filepath), {'sourceMap': true});
+    var answer = coffee.compile(file.read(filepath), {
+        'sourceMap': true,
+        'sourceFiles': [ filepath.split('/').slice(-1)[0] ],
+        'generatedFile': filepath.replace(/\.coffee$/, '.map').split('/').slice(-1)[0]
+    });
     if (answer.js) {
+        answer.js += "\n//@ sourceMappingURL=/" + filepath.replace(/\.coffee$/, '.map');
         file.write(filepath.replace(/\.coffee$/, '.js'), answer.js);
     }
     if (answer.v3SourceMap) {
