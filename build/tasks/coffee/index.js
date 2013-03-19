@@ -24,8 +24,13 @@ task.registerHelper('coffee', function(filepath /* String */, callback /* [Funct
   var coffee = require('coffee-script');
 
   try {
-    var js = coffee.compile(file.read(filepath));
-    if (js) file.write(filepath.replace(/\.coffee$/, '.js'), js);
+    var answer = coffee.compile(file.read(filepath), {'sourceMap': true});
+    if (answer.js) {
+        file.write(filepath.replace(/\.coffee$/, '.js'), answer.js);
+    }
+    if (answer.v3SourceMap) {
+        file.write(filepath.replace(/\.coffee$/, '.map'), answer.v3SourceMap);
+    }
   }
   catch (e) {
     log.error(e.message);
